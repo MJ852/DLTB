@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    tools:context=".InspectionMenu">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/header"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEL MONTE LAND TRANSPORT \n BUS COMPANY, INC. (LUCENA)"
+            android:textSize="12sp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/dark_blue" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="38dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/top_guide">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="74dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center"
+                android:text="15 Mar 2023"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="38dp"
+                android:gravity="center"
+                android:text="18: 05"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        android:id="@+id/bg"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/vehicle_no_background" />
+
+    <TextView
+        android:layout_width="258dp"
+        android:layout_height="27dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        android:layout_marginTop="14dp"
+        android:text="INSPECTION MENU"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        android:layout_marginTop="100dp">
+
+        <android.widget.Button
+            android:id="@+id/inspection_summary_btn"
+            android:layout_width="145dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/closing_menu_btns"
+            android:gravity="start|center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:text="INSPECTION SUMMARY"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <android.widget.Button
+            android:id="@+id/violation_btn"
+            android:layout_width="145dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="9dp"
+            android:gravity="start|center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:background="@drawable/closing_menu_btns"
+            android:text="VIOLATION"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        android:layout_marginTop="180dp">
+
+        <android.widget.Button
+            android:id="@+id/trouble_btn"
+            android:layout_width="145dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="0dp"
+            android:gravity="start|center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:background="@drawable/closing_menu_btns"
+            android:text="TROUBLE"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <android.widget.Button
+            android:id="@+id/reports_btn"
+            android:layout_width="145dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="9dp"
+            android:gravity="start|center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:background="@drawable/closing_menu_btns"
+            android:text="REPORTS"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        android:layout_marginTop="260dp"
+        android:gravity="center">
+
+        <android.widget.Button
+            android:id="@+id/view_all_btn"
+            android:layout_width="145dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="0dp"
+            android:gravity="start|center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:background="@drawable/closing_menu_btns"
+            android:text="VIEW ALL"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/dispatch_btn"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="390dp"
+        android:background="@drawable/light_blue_button"
+        android:text="BACK"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        app:layout_constraintWidth_percent="0.6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

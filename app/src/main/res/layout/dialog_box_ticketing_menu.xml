@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="325dp"
+    android:layout_height="325dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    tools:context=".DialogBox_TicketingMenu"
+    android:background="@drawable/dark_blue">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <TextView
+        android:id="@+id/ticketing_m"
+        android:layout_width="285dp"
+        android:layout_height="21dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="TICKETING MENU"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <View
+        android:id="@+id/gray_bg"
+        android:layout_width="325dp"
+        android:layout_height="272dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/gray_btn"/>
+
+    <LinearLayout
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/gray_bg">
+        
+        <TextView
+            android:layout_width="277dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"
+            android:text="Are you sure you want to exit?"
+            android:textColor="@color/darkgray"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center"
+            />
+
+        <android.widget.Button
+            android:id="@+id/passenger_onboard"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.25"
+            android:layout_marginStart="0dp"
+            android:layout_gravity="center"
+            android:background="@drawable/dark_blue_button"
+            android:text="Passengers on Board"
+            android:gravity="start|center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <android.widget.Button
+            android:id="@+id/baggage_onboard"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:background="@drawable/dark_blue_button"
+            android:text="Baggage on Board"
+            android:gravity="start|center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <android.widget.Button
+            android:id="@+id/gross_amount"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.25"
+            android:layout_gravity="center"
+            android:background="@drawable/dark_blue_button"
+            android:text="Gross Amount"
+            android:gravity="start|center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <android.widget.Button
+            android:id="@+id/last_ticketno"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.25"
+            android:layout_gravity="center"
+            android:background="@drawable/dark_blue_button"
+            android:text="Last Ticket No."
+            android:gravity="start|center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="right"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/gray_bg">
+        
+        <TextView
+            android:id="@+id/passengers_onboard_txt"
+            android:layout_width="16dp"
+            android:layout_height="17dp"
+            android:layout_marginEnd="50dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/baggage_onboard_txt"
+            android:layout_width="16dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="50dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/gross_amount_txt"
+            android:layout_width="16dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="50dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/last_ticketno_txt"
+            android:layout_width="16dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="50dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toBottomOf="@id/list"
+        app:layout_constraintTop_toTopOf="@id/gray_bg">
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+        <android.widget.Button
+            android:id="@+id/no_btn"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.2"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/light_blue_button"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:text="NO"
+            android:gravity="center"/>
+
+        <android.widget.Button
+            android:id="@+id/yes_btn"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.2"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/light_blue_button"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:text="YES"
+            android:gravity="center"/>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,17 @@
+<!-- res/drawable/text_color_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Button pressed state -->
+    <item android:state_pressed="true">
+        <color android:color="#FFFFFF" /> <!-- Pressed text color -->
+    </item>
+
+    <!-- Button focused state (optional, you can add it if needed) -->
+    <item android:state_focused="true">
+        <color android:color="#FFFFFF" /> <!-- Focused text color -->
+    </item>
+
+    <!-- Default state -->
+    <item>
+        <color android:color="#46AEF2" /> <!-- Default text color -->
+    </item>
+</selector>

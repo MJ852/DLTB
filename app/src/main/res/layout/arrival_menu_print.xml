@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ArrivalMenu"
+    android:background="@color/dark_blue">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="DEL MONTE LAND TRANSPORT \n BUS COMPANY, INC. (LUCENA)"
+            android:textColor="@color/dark_blue"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/top_right_bg"
+            android:layout_width="68dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="282dp"
+            android:background="@drawable/light_blue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/passenger_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="298dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal"
+            android:text="02"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/top_right_bg"
+            app:layout_constraintStart_toStartOf="@id/top_right_bg"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="292dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
+            android:text="PASSENGER\nCOUNT"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/top_right_bg"
+            app:layout_constraintStart_toStartOf="@id/top_right_bg"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="38dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/top_guide">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="74dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center"
+                android:text="15 Mar 2023"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="38dp"
+                android:gravity="center"
+                android:text="18: 05"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/bg"
+        android:layout_width="308dp"
+        android:layout_height="57dp"
+        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/vehicle_no_background" />
+
+    <TextView
+        android:layout_width="258dp"
+        android:layout_height="27dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        android:layout_marginTop="14dp"
+        android:text="ARRIVAL MENU"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <View
+        android:id="@+id/bg_list"
+        android:layout_width="303dp"
+        android:layout_height="280dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        android:layout_marginTop="77dp"
+        android:background="@drawable/light_gray" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="00dp"
+        android:layout_marginBottom="35dp"
+        app:layout_constraintTop_toTopOf="@+id/bg_list"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintBottom_toTopOf="@id/buttons">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toTopOf="@id/bg"
+            app:layout_constraintEnd_toEndOf="@id/guide_end">
+
+    <LinearLayout
+        android:layout_width="303dp"
+        android:layout_height="387dp"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="40dp">
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="20dp"
+            android:text="OPENING:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="20dp"
+            android:text="CLOSING:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:text="TOTAL PASSENGER:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="TOTAL BAGGAGE:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="TOTAL PASSES:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:text="PASSENGER AMOUNT:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="BAGGAGE AMOUNT:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="TOTAL CARD SALES:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginStart="20dp"
+            android:text="TRIP NO:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:text="TOR NO:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="CONDUCTOR NO:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="DRIVER:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="DISPATCHER:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start"/>
+
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="20dp"
+            android:text="ROUTE:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="303dp"
+        android:layout_height="387dp"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="30dp">
+
+        <TextView
+            android:id="@+id/opening_tickets"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="200dp"
+            android:text="NO TICKET"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="end" />
+
+        <TextView
+            android:id="@+id/closing_tickets"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="200dp"
+            android:text="NO TICKET"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="end" />
+
+        <TextView
+            android:id="@+id/total_passengers"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="200dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/total_baggage"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="200dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/total_passes"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="200dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/passenger_amount"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="200dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/baggage_amount"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="200dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/total_cardsales"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="200dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tor_number"
+            android:layout_width="65dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="66dp"
+            android:layout_marginStart="200dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/conductor_number"
+            android:layout_width="140dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="150dp"
+            android:text="JUAN DELA CRUZ"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/driver_name"
+            android:layout_width="140dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="150dp"
+            android:text="JUAN DELA CRUZ"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/dispatcher_name"
+            android:layout_width="140dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="150dp"
+            android:text="JUAN DELA CRUZ"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/route"
+            android:layout_width="140dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="150dp"
+            android:text="LRT - LUCENA"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="303dp"
+        android:layout_height="387dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="40dp">
+
+        <TextView
+            android:id="@+id/trip_number"
+            android:layout_width="40dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="233dp"
+            android:layout_marginStart="75dp"
+            android:text="0000"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="234dp"
+            android:layout_marginStart="25dp"
+            android:text="VEHICLE NO:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:gravity="start" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="233dp"
+            android:layout_marginStart="0dp"
+            android:text="0000"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg"
+        android:layout_marginTop="390dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="150dp"
+        android:gravity="center">
+
+        <android.widget.Button
+            android:id="@+id/back_btn"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_weight="5"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="100dp"
+            android:background="@drawable/light_blue_button"
+            android:text="BACK"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <android.widget.Button
+            android:id="@+id/print_btn"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_weight="5"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/light_blue_button"
+            android:text="PRINT"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

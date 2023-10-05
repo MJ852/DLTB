@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ticketing"
+    android:background="@color/dark_blue">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/header"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEL MONTE LAND TRANSPORT \n BUS COMPANY, INC. (LUCENA)"
+            android:textSize="12sp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/dark_blue" />
+
+        <View
+            android:id="@+id/top_right_bg"
+            android:layout_width="68dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="282dp"
+            android:background="@drawable/light_blue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/passenger_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="298dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal"
+            android:text="02"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/top_right_bg"
+            app:layout_constraintStart_toStartOf="@id/top_right_bg"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="292dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
+            android:text="PASSENGER\nCOUNT"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/top_right_bg"
+            app:layout_constraintStart_toStartOf="@id/top_right_bg"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="38dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/top_guide">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="74dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center"
+                android:text="15 Mar 2023"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="38dp"
+                android:gravity="center"
+                android:text="18: 05"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/view">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <android.widget.Button
+                android:id="@+id/first_btn"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="30"
+                android:background="@drawable/dark_blue_button"
+                android:text="SOUTH"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <android.widget.Button
+                android:id="@+id/second_btn"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="30"
+                android:background="@drawable/dark_blue_button"
+                android:text="LRT LUCENA"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+    
+    <View
+        android:id="@+id/rectangle_bg"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/gray_btn" />
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/rectangle_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+        <android.widget.Button
+            android:id="@+id/fix_btn"
+            android:layout_width="0dp"
+            android:layout_height="47dp"
+            android:layout_weight="0.3"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/light_blue_button"
+            android:text="FIX"
+            android:gravity="start|center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+
+        <android.widget.Button
+            android:id="@+id/kmRun_btn"
+            android:layout_width="0dp"
+            android:layout_height="47dp"
+            android:layout_weight="0.3"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:gravity="top|center_horizontal"
+            android:background="@drawable/light_blue_button"
+            android:text="KM RUN"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+
+        <android.widget.Button
+            android:id="@+id/menu_btn"
+            android:layout_width="0dp"
+            android:layout_height="47dp"
+            android:layout_weight="0.3"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/light_blue_button"
+            android:text="MENU"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+        </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center">
+        <EditText
+            android:id="@+id/fix_price"
+            android:layout_width="35dp"
+            android:layout_height="33dp"
+            android:layout_weight="50"
+            android:background="@drawable/gray_btn"
+            android:layout_marginStart="31dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="0dp"
+            android:hint="0"
+            android:layout_gravity="center"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/km_run"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
+            android:layout_weight="100"
+            android:background="@drawable/gray_btn"
+            android:layout_marginStart="31dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="7.5dp"
+            android:hint="0"
+            android:layout_gravity="center"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:autofillHints="0" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/rectangle_bg">
+
+        <android.widget.Button
+            android:id="@+id/from_left_btn"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="0.4"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/dark_blue_button_2"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:drawableStart="@drawable/arrow_left0"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp" />
+
+        <TextView
+            android:id="@+id/from_text"
+            android:layout_width="0dp"
+            android:layout_height="27dp"
+            android:layout_weight="1.75"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal|top"
+            android:text="LRT BUENDIA"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <android.widget.Button
+            android:id="@+id/from_right_btn"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="0.4"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/dark_blue_button_2"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:drawableStart="@drawable/arrow_right"
+            android:paddingStart="8dp"
+            android:paddingEnd="5dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/rectangle_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="0dp">
+        <android.widget.Button
+            android:id="@+id/button_0"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/stations_btn"
+            android:text="(23 KM)\nALABANG"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <android.widget.Button
+            android:id="@+id/button_1"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/stations_btn"
+            android:text="(60 KM)\nBAGONG KALSADA"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="60dp">
+
+            <android.widget.Button
+                android:id="@+id/button_2"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/stations_btn"
+                android:text="(53 KM)\nTURBINA/CALAMBA"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <android.widget.Button
+                android:id="@+id/button_3"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/stations_btn"
+                android:text="(63 KM)\nLOS BANOS"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="120dp">
+            <android.widget.Button
+                android:id="@+id/button_4"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/stations_btn"
+                android:text="(55 KM)\nBUCAL"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <android.widget.Button
+                android:id="@+id/button_5"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/stations_btn"
+                android:text="(68 KM)\nSTO DOMINGO"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/rectangle_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+                <android.widget.Button
+                    android:id="@+id/passenger_type_btn"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="0dp"
+                    android:background="@drawable/circle_btns" />
+
+                <android.widget.Button
+                    android:id="@+id/baggage_btn"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="27dp"
+                    android:background="@drawable/circle_btns" />
+
+            <android.widget.Button
+                android:id="@+id/card_btn"
+                android:layout_marginTop="0dp"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="27dp"
+                android:background="@drawable/circle_btns" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PASSENGER\n       TYPE"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BAGGAGE"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="30dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CARD"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="45dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="11dp">
+
+            <ImageView
+                android:layout_width="41dp"
+                android:layout_height="37dp"
+                android:src="@drawable/passenger_type"
+                android:layout_marginTop="0dp" />
+
+            <ImageView
+                android:layout_width="41dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="50dp"
+                android:src="@drawable/baggage"
+                android:layout_marginTop="0dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="53dp"
+                android:src="@drawable/card"
+                android:layout_marginTop="0dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

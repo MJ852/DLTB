@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DLTB</string>
+    <string name="passengerType_text"><u>SELECT</u></string>
+    <string name="baggage_text"><u>ENTER PRICE</u></string>
+    <string name="dialogbox_saveFinalCash">Save End of Day FINAL CASH?</string>
+    <string name="dialogbox_finishedPrinting">Are you sure you would like to close the transaction?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
