@@ -11,21 +11,21 @@ class DataInitializer(private val dbHelper: DBHelper) {
         Log.d("DataInitializer", "Initializing data")
 
         val drivers = arrayOf(
-            Pair("4B7851D9", "Juan Cruz"),
-            Pair("91011123", "Maria Clara")
+            Pair("4B7851D9", "Driver Name 01"),
+            Pair("91011123", "Driver Name 02")
             // Add more driver data here...
         )
 
         val dispatchers = arrayOf(
-            Pair("AB4D50D9", "Juan Cruz"),
-            Pair("98765421", "Maria Clara")
-            // Add more driver data here...
+            Pair("AB4D50D9", "Dispatcher Name 01"),
+            Pair("98765421", "Dispatcher Name 01")
+            // Add more dispatcher data here...
         )
 
         val conductors = arrayOf(
-            Pair("CB1840D9", "Juan Cruz"),
-            Pair("45612348", "Maria Clara")
-            // Add more driver data here...
+            Pair("CB1840D9", "Conductor Name 01"),
+            Pair("45612348", "Conductor Name 02")
+            // Add more conductor data here...
         )
 
         try {
@@ -33,46 +33,8 @@ class DataInitializer(private val dbHelper: DBHelper) {
             dbHelper.insertDrivers(drivers)
             dbHelper.insertDispatchers(dispatchers)
             dbHelper.insertConductors(conductors)
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             Log.d("DataInitializer", "Error Initializing data")
         }
-
-
     }
-
-//    private fun insertConductors(conductors: Array<Pair<String, String>>) {
-//        val db = dbHelper.writableDatabase
-//        db.beginTransaction()
-//        try {
-//            for (conductor in conductors) {
-//                val contentValues = ContentValues()
-//                contentValues.put("ConductorID", conductor.first)
-//                contentValues.put("Name", conductor.second)
-//                db.insert("Conductor", null, contentValues)
-//            }
-//            db.setTransactionSuccessful()
-//        } catch (e: Exception) {
-//            // Handle the exception, e.g., log an error
-//        } finally {
-//            db.endTransaction()
-//        }
-//    }
-//
-//    private fun insertDispatchers(dispatchers: Array<Pair<String, String>>) {
-//        val db = dbHelper.writableDatabase
-//        db.beginTransaction()
-//        try {
-//            for (dispatcher in dispatchers) {
-//                val contentValues = ContentValues()
-//                contentValues.put("DispatcherID", dispatcher.first)
-//                contentValues.put("Name", dispatcher.second)
-//                db.insert("Dispatchers", null, contentValues)
-//            }
-//            db.setTransactionSuccessful()
-//        } catch (e: Exception) {
-//            // Handle the exception, e.g., log an error
-//        } finally {
-//            db.endTransaction()
-//        }
-//    }
 }

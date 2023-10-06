@@ -13,7 +13,6 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "DLTBDatabase", nul
         db.execSQL("CREATE TABLE IF NOT EXISTS Drivers (DriverID TEXT PRIMARY KEY, Name TEXT)")
         db.execSQL("CREATE TABLE IF NOT EXISTS Dispatchers (DispatcherID TEXT PRIMARY KEY, Name TEXT)")
         db.execSQL("CREATE TABLE IF NOT EXISTS Conductors (ConductorID TEXT PRIMARY KEY, Name TEXT)")
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -61,7 +60,6 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "DLTBDatabase", nul
                 drivers.add(Pair(driverID, name))
             }
         }
-
         return drivers
     }
 
@@ -111,7 +109,6 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "DLTBDatabase", nul
                 dispatchers.add(Pair(dispatcherID, name))
             }
         }
-
         return dispatchers
     }
 
@@ -161,7 +158,6 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "DLTBDatabase", nul
                 conductors.add(Pair(conductorID, name))
             }
         }
-
         return conductors
     }
 
@@ -176,21 +172,4 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "DLTBDatabase", nul
             db.close()
         }
     }
-
-
-
-
-
-//
-//    fun isDriverExists(driverName: String): Boolean {
-//        val db = this.readableDatabase
-//        val query = "SELECT DriverID FROM Drivers WHERE Name = ?"
-//        val cursor = db.rawQuery(query, arrayOf(driverName))
-//        val exists = cursor.count > 0
-//        cursor.close()
-//        db.close()
-//        return exists
-//    }
-
-
 }

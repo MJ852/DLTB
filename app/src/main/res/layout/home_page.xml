@@ -350,6 +350,111 @@
     </RelativeLayout>
 
     <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="115dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg_vehicle">
+
+        <LinearLayout
+            android:id="@+id/dispatcherLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+        <TextView
+            android:id="@+id/dispatcher_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DISPATCHER"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="25dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/dispatcher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DISPATCHER"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            android:gravity="center"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:visibility="gone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="65dp">
+        <TextView
+            android:id="@+id/driver_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DRIVER"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="25dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/driver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DISPATCHER"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:visibility="gone"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="135dp">
+            <TextView
+                android:id="@+id/conductor_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONDUCTOR"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="25dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/conductor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DISPATCHER"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/relativeLayout10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -405,6 +510,14 @@
         app:layout_constraintTop_toTopOf="@id/bg_vehicle"
         app:layout_constraintWidth_percent="0.75"/>
 
+    <View
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90000000"
+        android:id="@+id/semiTransparentOverlay"
+        android:visibility="gone"/>
+
     <ListView
         android:id="@+id/selectRouteListView"
         android:layout_width="280dp"
@@ -418,6 +531,20 @@
         app:layout_constraintTop_toTopOf="@id/bg_vehicle"
         app:layout_constraintBottom_toBottomOf="@id/dispatch_btn"
         app:layout_constraintWidth_percent="0.75" />
+
+    <ListView
+        android:id="@+id/selectVehicleListView"
+        android:layout_width="0dp"
+        android:layout_height="340dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg_vehicle"
+        app:layout_constraintBottom_toBottomOf="@id/dispatch_btn"
+        app:layout_constraintWidth_percent="0.65" />
 
     <android.widget.Button
         android:id="@+id/dispatch_btn"

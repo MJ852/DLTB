@@ -16,11 +16,13 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var selectBoundlistView: ListView
     private lateinit var selectRoutelistView: ListView
+    private lateinit var dimBackground: View
     private lateinit var selectBoundOptionsbutton: Button
     private lateinit var selectRoutesOptionsbutton: Button
     private lateinit var northBoundOptions: Array<String>
@@ -33,7 +35,9 @@ class MainActivity : AppCompatActivity() {
     private var isDispatcherExists = false
     private var isDriverExists = false
     private var isConductorExists = false
-    private var tripButtonClicked = false
+    private var regularTripButtonClicked = false
+    private var specialTripButtonClicked = false
+
 
     private lateinit var customButtons: CustomButtons
 
@@ -51,19 +55,20 @@ class MainActivity : AppCompatActivity() {
 
         dbHelper = DBHelper(applicationContext)
 
-        selectBoundOptionsbutton = findViewById(R.id.select_bound_btn)
-        selectRoutesOptionsbutton = findViewById(R.id.select_route_btn)
-        selectBoundlistView = findViewById(R.id.selectBoundListView)
-        selectRoutelistView = findViewById(R.id.selectRouteListView)
-
-        customButtons = CustomButtons()
-
         if (!dataInitialized) {
             val dbHelper = DBHelper(applicationContext)
             val dataInitializer = DataInitializer(dbHelper)
             dataInitializer.initializeData()
             dataInitialized = true
         }
+
+        selectBoundOptionsbutton = findViewById(R.id.select_bound_btn)
+        selectRoutesOptionsbutton = findViewById(R.id.select_route_btn)
+        selectBoundlistView = findViewById(R.id.selectBoundListView)
+        selectRoutelistView = findViewById(R.id.selectRouteListView)
+        dimBackground = findViewById<View>(R.id.semiTransparentOverlay)
+
+        customButtons = CustomButtons()
 
         northBoundOptions = arrayOf(
             "Sample 1 - Sample 2",
@@ -87,36 +92,14 @@ class MainActivity : AppCompatActivity() {
             "CUBAO - DOLORES",
             "CUBAO - DALAHICAN"
         )
+
         selectBoundOptionsbutton.setOnClickListener {
             selectBound()
         }
         selectRoutesOptionsbutton.setOnClickListener {
             selectRoute()
         }
-
-        val regularTripButton = findViewById<Button>(R.id.regulartrip_btn)
-        val specialTripButton = findViewById<Button>(R.id.specialtrip_btn)
-
-        regularTripButton.setOnClickListener {
-            customButtons.handleTripButtonClick(regularTripButton)
-            tripButtonClicked = true
-        }
-        regularTripButton.performClick()
-
-        specialTripButton.setOnClickListener {
-            customButtons.handleTripButtonClick(specialTripButton)
-            tripButtonClicked = true
-        }
-
-            selectRoutelistView.setOnItemClickListener { _, _, position, _ ->
-            val selectedItem = selectRoutelistView.adapter.getItem(position) as String
-            selectedRoute = selectedItem
-            selectRoutesOptionsbutton.text = selectedRoute
-            selectRoutelistView.visibility = View.GONE
-
-            isSelectedRoute = true
-        }
-        updateDispatchButtonState()
+        boundAndRoute()
 
         // Date and Time
         val dateTextView = findViewById<TextView>(R.id.dateTextView)
@@ -135,13 +118,14 @@ class MainActivity : AppCompatActivity() {
         isDriverExists = dbHelper.driverExists(driverCardUID)
         isConductorExists = dbHelper.conductorExists(conductorCardUID)
 
-
-
         Log.d("Requirements", "$isDispatcherExists")
         Log.d("Requirements", "$isDriverExists")
         Log.d("Requirements", "$isConductorExists")
         Log.d("Requirements", "$isSelectedBound")
         Log.d("Requirements", "$isSelectedRoute")
+        Log.d("Requirements", "$regularTripButtonClicked")
+        Log.d("Requirements", "$specialTripButtonClicked")
+        updateDispatchButtonState()
 
         // Toast.makeText(this, "$dispatcherCardUID, $tagUID", Toast.LENGTH_SHORT).show()
     }
@@ -182,18 +166,26 @@ class MainActivity : AppCompatActivity() {
             setOptionsForRouteButton(selectedBound) // set options for bound
         }
         builder.show()
+        Log.d("Select Bound req", "$isSelectedBound")
+        Log.d("Select Bound req", "$isSelectedRoute")
     }
 
     private fun selectRoute() {
+
         if (selectRoutelistView.visibility == View.VISIBLE) {
             selectRoutelistView.visibility = View.GONE
+            dimBackground.visibility = View.GONE
+            Log.d("Visibility", "ListView and Overlay are now gone.")
 
             if (selectedRoute != "Select Route") {
                 isSelectedRoute = true
             }
-        } else {}
+        } else {
             selectRoutelistView.visibility = View.VISIBLE
+            dimBackground.visibility = View.VISIBLE
+            Log.d("Visibility", "ListView and Overlay visible.")
         }
+    }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
@@ -206,8 +198,6 @@ class MainActivity : AppCompatActivity() {
                 val tagUID = byteArrayToHexString(uidBytes)
                 Toast.makeText(this, "UID: $tagUID", Toast.LENGTH_SHORT).show()
 
-                // Log.d("UID Mismatch", "UID: $tagUID, and $driverCardUID")
-
                 // Check if the UID exists
                 val driverExists = dbHelper.driverExists(tagUID)
                 val dispatcherExists = dbHelper.dispatcherExists(tagUID)
@@ -217,43 +207,65 @@ class MainActivity : AppCompatActivity() {
                 val dispatchers = dbHelper.getDispatcherData()
                 val conductors = dbHelper.getConductorData()
 
-                // driver
-                for (driver in drivers) {
-                    val uid = driver.first
-                    val name = driver.second
-                    Log.d("DriverInfo", "UID: $uid, Name: $name")
-                }
+                val dispatcherText = findViewById<TextView>(R.id.dispatcher_text)
+                val driverText = findViewById<TextView>(R.id.driver_text)
+                val conductorText = findViewById<TextView>(R.id.conductor_text)
 
-                // dispatcher
-                for (dispatcher in dispatchers) {
-                    val uid = dispatcher.first
-                    val name = dispatcher.second
-                    Log.d("Dispatcher Info", "UID: $uid, Name: $name")
-                }
-
-                // conductor
-                for (conductor in conductors) {
-                    val uid = conductor.first
-                    val name = conductor.second
-                    Log.d("Conductor Info", "UID: $uid, Name: $name")
-                }
+                val dispatcherName = findViewById<TextView>(R.id.dispatcher_name)
+                val driverName = findViewById<TextView>(R.id.driver_name)
+                val conductorName = findViewById<TextView>(R.id.conductor_name)
 
                 if (driverExists && !isDriverExists) {
                     tapInDriver()
                     isDriverExists = true
-                    Log.d("Driver Result", "Data Found in Driver for UID: $tagUID")
+
+                    for (driver in drivers) {
+                        val driverUid = driver.first
+                        val driverNameDB = driver.second
+                        if (driverUid == tagUID) {
+                            driverText.visibility = View.VISIBLE
+                            driverName.visibility = View.VISIBLE
+                            driverName.text = driverNameDB
+                            Log.d("DriverInfo", "UID: $driverUid, Name: $driverNameDB")
+                            break
+                        } else {
+                            Toast.makeText(this, "Does not exist", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
 
                 if (dispatcherExists && !isDispatcherExists) {
                     tapInDispatcher()
                     isDispatcherExists = true
-                    Log.d("Dispatcher Result", "Data Found in Dispatcher for UID: $tagUID")
+
+                    for (dispatcher in dispatchers) {
+                        val dispatcherUid = dispatcher.first
+                        val dispatcherNameDB = dispatcher.second
+                        if (dispatcherUid == tagUID) {
+                            dispatcherText.visibility = View.VISIBLE
+                            dispatcherName.visibility = View.VISIBLE
+                            dispatcherName.text = dispatcherNameDB
+                            Log.d("Dispatcher Info", "UID: $dispatcherUid, Name: $dispatcherNameDB")
+                            break
+                        }
+                    }
                 }
 
                 if (conductorExists && !isConductorExists) {
                     tapInConductor()
                     isConductorExists = true
-                    Log.d("Conductor Result", "Data Found in Conductor for UID: $tagUID")
+
+                    for (conductor in conductors) {
+                        val conductorUid = conductor.first
+                        val conductorNameDB = conductor.second
+                        if (conductorUid == tagUID) {
+                            conductorText.visibility = View.VISIBLE
+                            conductorName.visibility = View.VISIBLE
+                            conductorName.text = conductorNameDB
+                            Log.d("Conductor Info", "UID: $conductorUid, Name: $conductorNameDB")
+                            break
+                        }
+                    }
                 }
 
                 Log.d("Requirements", "$isDispatcherExists")
@@ -261,6 +273,11 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Requirements", "$isConductorExists")
                 Log.d("Requirements", "$isSelectedBound")
                 Log.d("Requirements", "$isSelectedRoute")
+                Log.d("Requirements", "$regularTripButtonClicked")
+                Log.d("Requirements", "$specialTripButtonClicked")
+
+                updateDispatchButtonState()
+
             }
         }
     }
@@ -297,9 +314,10 @@ class MainActivity : AppCompatActivity() {
             val button = findViewById<Button>(R.id.driver_btn,)
             button.setTextColor(Color.WHITE)
             button.setBackgroundResource(R.drawable.green_btn)
+            button.text = ""
             isDriverExists = true
-        }else {
-            Log.d("Requirement", "The driver did not tapped in")
+        } else {
+            Log.d("Database Result", "UID Card Does not exist")
         }
         return driverCardUID
     }
@@ -312,9 +330,10 @@ class MainActivity : AppCompatActivity() {
             val button = findViewById<Button>(R.id.dispatcher_btn,)
             button.setTextColor(Color.WHITE)
             button.setBackgroundResource(R.drawable.green_btn)
+            button.text = ""
             isDispatcherExists = true
         } else {
-            Log.d("Requirement", "The dispatcher did not tapped in")
+            Log.d("Database Result", "UID Card Does not exist")
         }
         return dispatcherCardUID
     }
@@ -327,18 +346,66 @@ class MainActivity : AppCompatActivity() {
             val button = findViewById<Button>(R.id.conductor_btn,)
             button.setTextColor(Color.WHITE)
             button.setBackgroundResource(R.drawable.green_btn)
+            button.text = ""
             isConductorExists = true
         } else {
-
-            Log.d("Requirement", "The conductor did not tapped in")
+            Log.d("Database Result", "UID Card Does not exist")
         }
         return conductorCardUID
     }
 
+    private fun boundAndRoute(){
+        val regularTripButton = findViewById<Button>(R.id.regulartrip_btn)
+        val specialTripButton = findViewById<Button>(R.id.specialtrip_btn)
+        regularTripButton.setOnClickListener {
+            if (!regularTripButtonClicked) {
+                regularTripButtonClicked = true
+                specialTripButtonClicked = false
+                customButtons.handleTripButtonClick(regularTripButton)
+                Log.d("Regular Button", "$regularTripButtonClicked")
+                Log.d("Special Button", "$specialTripButtonClicked")
+                updateDispatchButtonState()
+            }
+        }
+        regularTripButton.performClick()
+
+        specialTripButton.setOnClickListener {
+            if (!specialTripButtonClicked) {
+                specialTripButtonClicked = true
+                regularTripButtonClicked = false
+                customButtons.handleTripButtonClick(specialTripButton)
+                Log.d("Special Button", "$specialTripButtonClicked")
+                Log.d("Regular Button", "$regularTripButtonClicked")
+                updateDispatchButtonState()
+            }
+        }
+
+        selectRoutelistView.setOnItemClickListener { _, _, position, _ ->
+            val selectedItem = selectRoutelistView.adapter.getItem(position) as String
+            selectedRoute = selectedItem
+            selectRoutesOptionsbutton.text = selectedRoute
+            selectRoutelistView.visibility = View.GONE
+            dimBackground.visibility = View.GONE
+            isSelectedRoute = true
+            updateDispatchButtonState()
+        }
+    }
+
     private fun updateDispatchButtonState() {
         val dispatchButton = findViewById<Button>(R.id.dispatch_btn)
-        if ( isSelectedBound && isSelectedRoute && isDispatcherExists && isDriverExists && isConductorExists && tripButtonClicked) {
+        val allConditionsMet =
+                isSelectedBound &&
+                isSelectedRoute &&
+                isDispatcherExists &&
+                isDriverExists &&
+                isConductorExists &&
+                ((regularTripButtonClicked && !specialTripButtonClicked) ||
+                  (!regularTripButtonClicked && specialTripButtonClicked))
+
+        if (allConditionsMet) {
             dispatchButton.isClickable = true
+            dispatchButton.setTextColor(Color.WHITE)
+            dispatchButton.setBackgroundResource(R.drawable.light_blue_button)
             Log.d("Requirements", "The requirements are met")
             dispatchButton.setOnClickListener {
                 val intent = Intent(this, DispatcherPage::class.java)
