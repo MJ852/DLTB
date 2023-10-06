@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var southBoundOptions: Array<String>
     private var selectedBound: String = "Select Bound"
     private var selectedRoute: String = "Select Route"
+    private var driverName: String = ""
+    private var conductorName: String = ""
 
     private var isSelectedBound = false
     private var isSelectedRoute = false
@@ -117,6 +119,10 @@ class MainActivity : AppCompatActivity() {
         isDispatcherExists = dbHelper.dispatcherExists(dispatcherCardUID)
         isDriverExists = dbHelper.driverExists(driverCardUID)
         isConductorExists = dbHelper.conductorExists(conductorCardUID)
+
+        // dispatcherName = findViewById<TextView>(R.id.dispatcher_name)
+         driverName = findViewById<TextView>(R.id.driver_name).toString()
+         conductorName = findViewById<TextView>(R.id.conductor_name).toString()
 
         Log.d("Requirements", "$isDispatcherExists")
         Log.d("Requirements", "$isDriverExists")
@@ -211,9 +217,9 @@ class MainActivity : AppCompatActivity() {
                 val driverText = findViewById<TextView>(R.id.driver_text)
                 val conductorText = findViewById<TextView>(R.id.conductor_text)
 
-                val dispatcherName = findViewById<TextView>(R.id.dispatcher_name)
-                val driverName = findViewById<TextView>(R.id.driver_name)
-                val conductorName = findViewById<TextView>(R.id.conductor_name)
+                val dispatcherNameDisplay = findViewById<TextView>(R.id.dispatcher_name)
+                val driverNameDisplay = findViewById<TextView>(R.id.driver_name)
+                val conductorNameDisplay = findViewById<TextView>(R.id.conductor_name)
 
                 if (driverExists && !isDriverExists) {
                     tapInDriver()
@@ -224,8 +230,9 @@ class MainActivity : AppCompatActivity() {
                         val driverNameDB = driver.second
                         if (driverUid == tagUID) {
                             driverText.visibility = View.VISIBLE
-                            driverName.visibility = View.VISIBLE
-                            driverName.text = driverNameDB
+                            driverNameDisplay.visibility = View.VISIBLE
+                            driverNameDisplay.text = driverNameDB
+                            driverName = driverNameDB
                             Log.d("DriverInfo", "UID: $driverUid, Name: $driverNameDB")
                             break
                         } else {
@@ -243,8 +250,8 @@ class MainActivity : AppCompatActivity() {
                         val dispatcherNameDB = dispatcher.second
                         if (dispatcherUid == tagUID) {
                             dispatcherText.visibility = View.VISIBLE
-                            dispatcherName.visibility = View.VISIBLE
-                            dispatcherName.text = dispatcherNameDB
+                            dispatcherNameDisplay.visibility = View.VISIBLE
+                            dispatcherNameDisplay.text = dispatcherNameDB
                             Log.d("Dispatcher Info", "UID: $dispatcherUid, Name: $dispatcherNameDB")
                             break
                         }
@@ -260,8 +267,9 @@ class MainActivity : AppCompatActivity() {
                         val conductorNameDB = conductor.second
                         if (conductorUid == tagUID) {
                             conductorText.visibility = View.VISIBLE
-                            conductorName.visibility = View.VISIBLE
-                            conductorName.text = conductorNameDB
+                            conductorNameDisplay.visibility = View.VISIBLE
+                            conductorNameDisplay.text = conductorNameDB
+                            conductorName = conductorNameDB
                             Log.d("Conductor Info", "UID: $conductorUid, Name: $conductorNameDB")
                             break
                         }
@@ -409,6 +417,8 @@ class MainActivity : AppCompatActivity() {
             Log.d("Requirements", "The requirements are met")
             dispatchButton.setOnClickListener {
                 val intent = Intent(this, DispatcherPage::class.java)
+                intent.putExtra("CONDUCTOR_Name", conductorName ?: "DefaultConductorName")
+                intent.putExtra("DRIVER_Name", driverName ?: "DefaultDriverName")
                 startActivity(intent)
             }
         } else {

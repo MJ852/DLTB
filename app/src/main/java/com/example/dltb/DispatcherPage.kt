@@ -11,6 +11,21 @@ class DispatcherPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dispatcher_page)
 
+        val driverName = intent.getStringExtra("DRIVER_Name")
+        val conductorName = intent.getStringExtra("CONDUCTOR_Name")
+
+        val driverNameTextView = findViewById<TextView>(R.id.driver_name)
+        val conductorNameTextView = findViewById<TextView>(R.id.conductor_name)
+
+        driverNameTextView.text = "$driverName"
+        conductorNameTextView.text = "$conductorName"
+
+
+
+
+
+
+
         val dateTextView = findViewById<TextView>(R.id.dateTextView)
         val timeTextView = findViewById<TextView>(R.id.timeTextView)
 
