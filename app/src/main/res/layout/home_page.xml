@@ -105,7 +105,6 @@
             app:layout_constraintEnd_toEndOf="@id/top_right_bg"
             app:layout_constraintStart_toStartOf="@id/top_right_bg"
             app:layout_constraintTop_toTopOf="parent"/>
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -553,7 +552,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="405dp"
-        android:background="@drawable/light_blue_button"
+        android:background="@drawable/disabled_button"
         android:text="DISPATCH"
         android:textColor="@color/white"
         android:textSize="20sp"

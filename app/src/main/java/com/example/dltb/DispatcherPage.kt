@@ -21,18 +21,11 @@ class DispatcherPage : AppCompatActivity() {
         conductorNameTextView.text = "$conductorName"
 
 
-
-
-
-
-
         val dateTextView = findViewById<TextView>(R.id.dateTextView)
         val timeTextView = findViewById<TextView>(R.id.timeTextView)
 
-
         val dateAndTime = DateAndTime(dateTextView, timeTextView)
         dateAndTime.start()
-
 
         val allTicketsButton = findViewById<Button>(R.id.all_tickets_btn)
         allTicketsButton.setOnClickListener {
@@ -56,4 +49,5 @@ class DispatcherPage : AppCompatActivity() {
         val dialogBox = DialogBoxChoosePosition.newInstance()
         dialogBox.show(supportFragmentManager, "popup")
     }
+    
 }

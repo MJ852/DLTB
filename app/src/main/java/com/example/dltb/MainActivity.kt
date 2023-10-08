@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -138,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        enableNFC()
+      //  enableNFC()
     }
 
     override fun onPause() {
@@ -209,14 +210,17 @@ class MainActivity : AppCompatActivity() {
                 val dispatcherExists = dbHelper.dispatcherExists(tagUID)
                 val conductorExists = dbHelper.conductorExists(tagUID)
 
+                // Get the data of the UID
                 val drivers = dbHelper.getDriverData()
                 val dispatchers = dbHelper.getDispatcherData()
                 val conductors = dbHelper.getConductorData()
 
+                // UI text
                 val dispatcherText = findViewById<TextView>(R.id.dispatcher_text)
                 val driverText = findViewById<TextView>(R.id.driver_text)
                 val conductorText = findViewById<TextView>(R.id.conductor_text)
 
+                // Display the name
                 val dispatcherNameDisplay = findViewById<TextView>(R.id.dispatcher_name)
                 val driverNameDisplay = findViewById<TextView>(R.id.driver_name)
                 val conductorNameDisplay = findViewById<TextView>(R.id.conductor_name)
@@ -287,6 +291,9 @@ class MainActivity : AppCompatActivity() {
                 updateDispatchButtonState()
 
             }
+            else {
+                Toast.makeText(this, "Card Error", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -325,7 +332,7 @@ class MainActivity : AppCompatActivity() {
             button.text = ""
             isDriverExists = true
         } else {
-            Log.d("Database Result", "UID Card Does not exist")
+             Toast.makeText(this, "UID does not exist", Toast.LENGTH_SHORT).show()
         }
         return driverCardUID
     }
@@ -341,7 +348,7 @@ class MainActivity : AppCompatActivity() {
             button.text = ""
             isDispatcherExists = true
         } else {
-            Log.d("Database Result", "UID Card Does not exist")
+            Toast.makeText(this, "UID does not exist", Toast.LENGTH_SHORT).show()
         }
         return dispatcherCardUID
     }
@@ -357,7 +364,7 @@ class MainActivity : AppCompatActivity() {
             button.text = ""
             isConductorExists = true
         } else {
-            Log.d("Database Result", "UID Card Does not exist")
+            Toast.makeText(this, "UID does not exist", Toast.LENGTH_SHORT).show()
         }
         return conductorCardUID
     }
@@ -407,27 +414,43 @@ class MainActivity : AppCompatActivity() {
                 isDispatcherExists &&
                 isDriverExists &&
                 isConductorExists &&
-                ((regularTripButtonClicked && !specialTripButtonClicked) ||
-                  (!regularTripButtonClicked && specialTripButtonClicked))
+                ((regularTripButtonClicked && !specialTripButtonClicked) || (!regularTripButtonClicked && specialTripButtonClicked))
 
-        if (allConditionsMet) {
-            dispatchButton.isClickable = true
-            dispatchButton.setTextColor(Color.WHITE)
-            dispatchButton.setBackgroundResource(R.drawable.light_blue_button)
-            Log.d("Requirements", "The requirements are met")
-            dispatchButton.setOnClickListener {
-                val intent = Intent(this, DispatcherPage::class.java)
-                intent.putExtra("CONDUCTOR_Name", conductorName ?: "DefaultConductorName")
-                intent.putExtra("DRIVER_Name", driverName ?: "DefaultDriverName")
-                startActivity(intent)
+        dispatchButton.setOnClickListener(){
+            if (allConditionsMet) {
+                dispatchButton.setTextColor(Color.WHITE)
+                dispatchButton.setBackgroundResource(R.drawable.light_blue_button)
+                Log.d("Requirements", "The requirements are met")
+                dispatchButton.setOnClickListener {
+                    val intent = Intent(this, DispatcherPage::class.java)
+                    intent.putExtra("CONDUCTOR_Name", conductorName ?: "DefaultConductorName")
+                    intent.putExtra("DRIVER_Name", driverName ?: "DefaultDriverName")
+                    startActivity(intent)
+                }
+            } else {
+                dialogBoxAlert()
+                dispatchButton.setTextColor(Color.LTGRAY)
+                dispatchButton.setBackgroundResource(R.drawable.disabled_button)
+                Log.d("Requirements", "The requirements are not met")
             }
-        } else {
-            dispatchButton.isClickable = false
-            dispatchButton.setTextColor(Color.LTGRAY)
-            dispatchButton.setBackgroundResource(R.drawable.disabled_button)
-            Log.d("Requirements", "The requirements are not met")
         }
     }
+
+    private fun dialogBoxAlert() {
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setTitle("Details Incomplete")
+        alertDialog.setMessage("Please complete the details to proceed")
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK") { dialog, which ->
+            dialog.dismiss()
+        }
+        alertDialog.show()
+    }
+
+    private fun dispatchButton(){
+
+    }
 }
+
 
 
