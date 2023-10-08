@@ -164,19 +164,6 @@
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toTopOf="@id/view" />
 
-    <View
-        android:id="@+id/bg_vehicle_number"
-        android:layout_width="0dp"
-        android:layout_height="27dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:background="@color/gray"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
-        app:layout_constraintTop_toTopOf="@id/bg_vehicle"
-        app:layout_constraintWidth_percent="0.65" />
-
     <TextView
         android:id="@+id/text_vehicle"
         android:layout_width="109dp"
@@ -189,22 +176,6 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
-        app:layout_constraintTop_toTopOf="@id/bg_vehicle" />
-
-    <TextView
-        android:id="@+id/vehicle_number_text"
-        android:layout_width="0dp"
-        android:layout_height="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
-        android:gravity="center_horizontal|top"
-        android:text="NO. 12345"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toTopOf="@id/bg_vehicle" />
@@ -223,7 +194,8 @@
         <LinearLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <android.widget.Button
                 android:id="@+id/select_bound_btn"
@@ -239,6 +211,7 @@
                 android:text="SELECT BOUND"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
+
 
             <android.widget.Button
                 android:id="@+id/select_route_btn"
@@ -509,25 +482,18 @@
         app:layout_constraintTop_toTopOf="@id/bg_vehicle"
         app:layout_constraintWidth_percent="0.75"/>
 
-    <View
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#90000000"
-        android:id="@+id/semiTransparentOverlay"
-        android:visibility="gone"/>
-
     <ListView
         android:id="@+id/selectRouteListView"
         android:layout_width="280dp"
-        android:layout_height="370dp"
+        android:layout_height="340dp"
         android:background="@color/white"
         android:visibility="gone"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toTopOf="@id/bg_vehicle"
+        app:layout_constraintTop_toBottomOf="@id/vehicle_number_btn"
         app:layout_constraintBottom_toBottomOf="@id/dispatch_btn"
         app:layout_constraintWidth_percent="0.75" />
 
@@ -545,6 +511,13 @@
         app:layout_constraintBottom_toBottomOf="@id/dispatch_btn"
         app:layout_constraintWidth_percent="0.65" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90000000"
+        android:id="@+id/semiTransparentOverlay"
+        android:visibility="gone"/>
+
     <android.widget.Button
         android:id="@+id/dispatch_btn"
         android:layout_width="0dp"
@@ -561,5 +534,22 @@
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toTopOf="@id/bg_vehicle"
         app:layout_constraintWidth_percent="0.75" />
+
+    <android.widget.Button
+        android:id="@+id/vehicle_number_btn"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@color/gray"
+        android:text="No. 01"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="@id/bg_vehicle"
+        app:layout_constraintWidth_percent="0.65" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

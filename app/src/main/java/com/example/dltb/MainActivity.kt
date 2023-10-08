@@ -17,17 +17,23 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import org.w3c.dom.Text
+import com.example.dltb.VehicleOptions
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var selectBoundlistView: ListView
     private lateinit var selectRoutelistView: ListView
+    private lateinit var selectVehicleNo: ListView
     private lateinit var dimBackground: View
     private lateinit var selectBoundOptionsbutton: Button
     private lateinit var selectRoutesOptionsbutton: Button
+    private lateinit var selectVehicleOptionsbutton: Button
     private lateinit var northBoundOptions: Array<String>
     private lateinit var southBoundOptions: Array<String>
+    private lateinit var selectVehicleOptions: Array<String>
     private var selectedBound: String = "Select Bound"
     private var selectedRoute: String = "Select Route"
     private var driverName: String = ""
@@ -67,8 +73,10 @@ class MainActivity : AppCompatActivity() {
 
         selectBoundOptionsbutton = findViewById(R.id.select_bound_btn)
         selectRoutesOptionsbutton = findViewById(R.id.select_route_btn)
+        selectVehicleOptionsbutton =  findViewById(R.id.vehicle_number_btn)
         selectBoundlistView = findViewById(R.id.selectBoundListView)
         selectRoutelistView = findViewById(R.id.selectRouteListView)
+        selectVehicleNo = findViewById(R.id.selectVehicleListView)
         dimBackground = findViewById<View>(R.id.semiTransparentOverlay)
 
         customButtons = CustomButtons()
@@ -95,6 +103,10 @@ class MainActivity : AppCompatActivity() {
             "CUBAO - DOLORES",
             "CUBAO - DALAHICAN"
         )
+
+        selectVehicleOptionsbutton.setOnClickListener{
+            selectVehicleNo()
+        }
 
         selectBoundOptionsbutton.setOnClickListener {
             selectBound()
@@ -147,6 +159,27 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    private fun selectVehicleNo() {
+        val vehicleOptionsList = VehicleOptions.selectVehicleOptions
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, vehicleOptionsList)
+        selectVehicleNo.adapter = adapter
+
+        selectVehicleOptionsbutton.setOnClickListener {
+            if (selectVehicleNo.visibility == View.VISIBLE) {
+                selectVehicleNo.visibility = View.GONE
+            } else {
+                selectVehicleNo.visibility = View.VISIBLE
+            }
+        }
+
+        selectVehicleNo.setOnItemClickListener { _, _, position, _ ->
+            val selectedItem = vehicleOptionsList[position]
+            selectVehicleOptionsbutton.text = selectedItem // Set the button text to the selected item
+            selectVehicleNo.visibility = View.GONE
+        }
+    }
+
+
     private fun setOptionsForRouteButton(direction: String) {
         // Set options for the second button based on the selected bound
         val options = if (direction == "North Bound") northBoundOptions else southBoundOptions
@@ -179,9 +212,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun selectRoute() {
 
+        val vehicleNumberBtn = findViewById<Button>(R.id.vehicle_number_btn)
+
         if (selectRoutelistView.visibility == View.VISIBLE) {
             selectRoutelistView.visibility = View.GONE
-            dimBackground.visibility = View.GONE
+            //vehicleNumberBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.dim_gray))
+           // dimBackground.visibility = View.GONE
             Log.d("Visibility", "ListView and Overlay are now gone.")
 
             if (selectedRoute != "Select Route") {
@@ -189,7 +225,8 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             selectRoutelistView.visibility = View.VISIBLE
-            dimBackground.visibility = View.VISIBLE
+           // dimBackground.visibility = View.VISIBLE
+            vehicleNumberBtn.setBackgroundResource(R.color.gray)
             Log.d("Visibility", "ListView and Overlay visible.")
         }
     }

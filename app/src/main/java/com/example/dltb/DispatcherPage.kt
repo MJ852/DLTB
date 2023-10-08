@@ -49,5 +49,5 @@ class DispatcherPage : AppCompatActivity() {
         val dialogBox = DialogBoxChoosePosition.newInstance()
         dialogBox.show(supportFragmentManager, "popup")
     }
-    
+
 }
