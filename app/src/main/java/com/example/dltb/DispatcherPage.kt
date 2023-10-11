@@ -13,12 +13,16 @@ class DispatcherPage : AppCompatActivity() {
 
         val driverName = intent.getStringExtra("DRIVER_Name")
         val conductorName = intent.getStringExtra("CONDUCTOR_Name")
+        //val passCount = intent.getStringExtra("PASSENGER_Count")
+
 
         val driverNameTextView = findViewById<TextView>(R.id.driver_name)
         val conductorNameTextView = findViewById<TextView>(R.id.conductor_name)
+        //val passengerCountTextView = findViewById<TextView>(R.id.passenger_count)
 
         driverNameTextView.text = "$driverName"
         conductorNameTextView.text = "$conductorName"
+       // passengerCountTextView.text = "$passCount"
 
 
         val dateTextView = findViewById<TextView>(R.id.dateTextView)
