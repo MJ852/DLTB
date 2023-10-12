@@ -377,8 +377,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun enableNFC() {
-        val nfcIntent = Intent(this, javaClass).addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING)
-        val nfcPendingIntent = PendingIntent.getActivity(this, 0, nfcIntent, 0)
+        val nfcIntent = Intent(this, javaClass)
+        val nfcPendingIntent = PendingIntent.getActivity(this, 0, nfcIntent, PendingIntent.FLAG_IMMUTABLE)
         val intentFiltersArray = arrayOf(IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED))
 
         nfcAdapter?.enableForegroundDispatch(this, nfcPendingIntent, intentFiltersArray, null)
